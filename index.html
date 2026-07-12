@@ -166,6 +166,9 @@
     }
     .plate-hero{margin:34px 0 0}
     .plates{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+    .plates--two{grid-template-columns:repeat(2,1fr)}
+    .plates--two .plate img{height:300px}
+    .plates:not(.plates--two) figure.plate:last-child:nth-child(3n+2){grid-column:span 2}
     figure.plate{
       margin:0;
       background:var(--white);
@@ -199,6 +202,79 @@
     }
     .credits{margin-top:26px;font-size:.78rem;color:#5a5c52;line-height:1.6}
     .credits a{color:#5a5c52}
+    .gear-split{
+      display:grid;
+      grid-template-columns:1fr 1.4fr;
+      gap:26px;
+      margin-top:34px;
+      align-items:start;
+    }
+    .gear-safe{
+      background:var(--forest);
+      color:var(--white);
+      padding:28px;
+    }
+    .gear-safe h3{margin-top:0;font-size:1.35rem}
+    .gear-safe ul{list-style:none;padding:0;margin:16px 0 0}
+    .gear-safe li{
+      padding:9px 0;
+      border-top:1px solid rgba(255,255,255,.18);
+      font-size:.95rem;
+    }
+    .gear-safe li:before{content:"✓";color:var(--gold);font-weight:700;margin-right:10px}
+    .gear-begin{
+      text-align:center;
+      font:700 .72rem Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      color:var(--rust);
+      margin:26px 0 6px;
+    }
+    .gear-items .grid-3{margin-top:0}
+    .crate{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:26px;
+      align-items:center;
+      background:var(--forest);
+      color:var(--white);
+      padding:28px;
+    }
+    .crate-stamp{
+      border:3px double var(--gold);
+      color:var(--gold);
+      font:700 .8rem/1.7 Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      padding:18px 22px;
+      transform:rotate(-2deg);
+      text-align:center;
+      white-space:nowrap;
+    }
+    .crate p{margin:0;line-height:1.6;color:#e8e2d2}
+    details.faq{border-top:1px solid var(--line);padding:4px 0}
+    details.faq:last-of-type{border-bottom:1px solid var(--line)}
+    details.faq summary{
+      cursor:pointer;
+      padding:18px 34px 18px 0;
+      font:700 1.12rem Georgia,serif;
+      list-style:none;
+      position:relative;
+    }
+    details.faq summary::-webkit-details-marker{display:none}
+    details.faq summary:after{
+      content:"+";
+      content:"+" / "";
+      position:absolute;
+      right:6px;
+      top:50%;
+      transform:translateY(-50%);
+      color:var(--rust);
+      font:700 1.4rem Arial,sans-serif;
+    }
+    details.faq[open] summary:after{content:"–";content:"–" / ""}
+    details.faq p{margin:0 0 20px;max-width:840px;line-height:1.65}
     .timeline{
       margin-top:34px;
       display:grid;
@@ -222,7 +298,7 @@
     .rule{padding:18px 0;border-top:1px solid var(--line)}
     .rule:before{
       counter-increment:item;
-      content:"0" counter(item);
+      content:counter(item, decimal-leading-zero);
       color:var(--rust);
       font:700 .72rem Arial,sans-serif;
       margin-right:12px;
@@ -234,6 +310,8 @@
       gap:18px;
     }
     label{font:700 .72rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em}
+    fieldset{border:0;padding:0;margin:0;min-width:0}
+    legend{font:700 .72rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;padding:0}
     input, textarea, select{
       width:100%;
       margin-top:7px;
@@ -291,9 +369,16 @@
       background:#d9e0ce;
       border-left:4px solid var(--forest);
     }
+    @media(max-width:1100px){
+      .gear-split{grid-template-columns:1fr}
+    }
     @media(max-width:800px){
-      .status,.grid-3,.rules,form,.skill-grid,.plates{grid-template-columns:1fr}
+      .grid-3,.rules,form,.skill-grid,.gear-split,.crate{grid-template-columns:1fr}
+      .status{grid-template-columns:repeat(2,1fr)}
+      .plates,.plates--two{grid-template-columns:1fr}
       .plate img{height:220px}
+      .plate-hero img{height:clamp(240px,60vw,320px)}
+      .crate-stamp{white-space:normal;justify-self:start}
       .mile,.roster-card{grid-template-columns:1fr}
       .full{grid-column:auto}
       section{padding:58px 0}
@@ -311,7 +396,8 @@
         planned for <strong>September 2027</strong> in <strong>Washington State or coastal western Canada</strong>.
         Separate teams. Ten-item survival kits. Primitive shelters. Fishing, foraging, food survival,
         strategy, shifting alliances, AI Expedition Command, personal Meta glasses, follow-drone footage—
-        and a story we will still be telling ten years later.
+        and a story we will still be telling ten years later. No spectators: everyone builds,
+        everyone plays, everyone films.
       </p>
       <div class="hero-actions">
         <a class="btn primary" href="#enlist">Request a place</a>
@@ -327,9 +413,33 @@
   </header>
 
   <main class="journal">
+    <section>
+      <div class="wrap">
+        <div class="section-no">Entry 002 // Why This Exists</div>
+        <h2>Most guys say "we should do something together sometime."</h2>
+        <p class="lead">
+          Then life happens. This is the opposite of that. We are putting a date on the calendar
+          two years out and building something worth remembering—not because it is easy, but
+          because years from now we will remember the first fish, the shelters, the rain, the
+          laughs, the terrible ideas, and the campfire stories long after we have forgotten
+          another weekend at home.
+        </p>
+        <figure class="plate plate-hero">
+          <img src="images/campfire.jpg" alt="Campfire flames burning over a bed of branches at night" loading="lazy" />
+          <figcaption>The deliverable
+            <em>Ten days of this. Stories we will still be telling at 60.</em>
+          </figcaption>
+        </figure>
+        <div class="quote">
+          The promise: one of the most memorable ten days of your life. Everything else on
+          this page is how we keep it.
+        </div>
+      </div>
+    </section>
+
     <section id="briefing">
       <div class="wrap">
-        <div class="section-no">Entry 002 // The Briefing</div>
+        <div class="section-no">Entry 003 // The Briefing</div>
         <h2>The challenge starts now.</h2>
         <p class="lead">
           This is not a finished vacation package. The location has not been secured. Rights to
@@ -364,7 +474,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 003 // Where This Happens</div>
+        <div class="section-no">Entry 004 // Where This Happens</div>
         <h2>Remote—but close enough to make participation realistic.</h2>
         <p class="lead">
           The expedition will take place in <strong>Washington State or coastal western Canada</strong>.
@@ -380,7 +490,7 @@
           <div class="card">
             <div class="stamp">Access</div>
             <h3>Boat, helicopter, or trail</h3>
-            <p>The final insertion may involve a charter boat, helicopter drop, or a hike of up to approximately ten miles, depending on the property and legal access.</p>
+            <p>The final insertion may involve a charter boat, floatplane, helicopter drop, or a hike of up to approximately ten miles, depending on the property and legal access.</p>
           </div>
           <div class="card">
             <div class="stamp">Participation</div>
@@ -396,7 +506,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 004 // Field Plates</div>
+        <div class="section-no">Entry 005 // Field Plates</div>
         <h2>The kind of country we are scouting.</h2>
         <p class="lead">
           The site is not secured yet, so these are reference photographs of candidate terrain—
@@ -449,10 +559,27 @@
               <em>A proper log lean-to with a stone fire ring. The craftsmanship bar.</em>
             </figcaption>
           </figure>
+          <figure class="plate">
+            <img src="images/rainforest.jpg" alt="Mist rising off a moss-lined stream over fallen logs in the Hoh Rainforest" loading="lazy" />
+            <figcaption>Plate VIII — September, honestly
+              <em>It rains here. That is the deal.</em>
+            </figcaption>
+          </figure>
+          <figure class="plate">
+            <img src="images/floatplane.jpg" alt="Red de Havilland Beaver floatplane tied up at a dock on calm water" loading="lazy" />
+            <figcaption>Plate IX — Insertion day
+              <em>Boat, floatplane, helicopter, or trail. However we get in, it starts here.</em>
+            </figcaption>
+          </figure>
         </div>
 
         <p class="credits">
-          Reference photographs via Wikimedia Commons:
+          Reference photographs throughout the site via Wikimedia Commons:
+          <a href="https://commons.wikimedia.org/wiki/File:Campfire_flames_at_night.jpg">Marc Lautenbacher</a> (CC BY-SA 4.0),
+          <a href="https://commons.wikimedia.org/wiki/File:Hall_of_Mosses,_Hoh_Rainforest,_Olympic_National_Park,_Washington_(2015).jpg">PKThundr7</a> (CC BY 4.0),
+          <a href="https://commons.wikimedia.org/wiki/File:Beaver_floatplane_at_Comox.jpg">petebutt</a> (CC BY-SA 3.0),
+          <a href="https://commons.wikimedia.org/wiki/File:Adult_sockeye_salmon_encounter_a_waterfall_on_their_way_up_river_to_spawn.jpg">USFWS</a> (public domain),
+          <a href="https://commons.wikimedia.org/wiki/File:Drying_salmon_on_fish_racks,_Chilkoot_River,_Alaska,_August_14,_1911_(COBB_192).jpeg">John Nathan Cobb, 1911</a> (public domain),
           <a href="https://commons.wikimedia.org/wiki/File:Mount_Shuksan_reflected_in_Picture_Lake.jpg">Ron Clausen</a> (CC BY-SA 4.0),
           <a href="https://commons.wikimedia.org/wiki/File:Cascade_Pass_Trail_at_North_Cascades_in_Washington_05.jpg">Jeffhollett</a> (CC BY-SA 4.0),
           <a href="https://commons.wikimedia.org/wiki/File:Stehekin_Chelan.JPG">David Ansley</a> (CC BY 2.5),
@@ -467,18 +594,18 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 005 // The Food Survival Game</div>
+        <div class="section-no">Entry 006 // The Food Survival Game</div>
         <h2>Stay in. Tap out. No shame either way.</h2>
         <p class="lead">
           The expedition is designed as a real food-survival game. Active players rely on what
-          they legally catch, forage, trade for, or win through challenges. But nobody is trapped
+          they legally catch, trap, forage, trade for, or win through challenges. But nobody is trapped
           in that choice.
         </p>
         <div class="grid-3">
           <div class="card">
             <div class="stamp">Stay in</div>
             <h3>Remain on the survival track</h3>
-            <p>You continue competing for food-survival recognition and live only on approved wild food, earned rewards, and any allowed shared resources.</p>
+            <p>You stay in the food game and live only on approved wild food, earned rewards, and any allowed shared resources.</p>
           </div>
           <div class="card">
             <div class="stamp">Tap out</div>
@@ -491,6 +618,24 @@
             <p>Tap-outs are not mocked, ranked as weak, pressured to stay in, or taunted with food. Supported food stays separate and is eaten discreetly away from active players.</p>
           </div>
         </div>
+        <div class="plates plates--two">
+          <figure class="plate">
+            <img src="images/salmon-catch.jpg" alt="Sockeye salmon leaping up a waterfall on their way upriver to spawn" loading="lazy" />
+            <figcaption>The food is already out there
+              <em>September in the Pacific Northwest is salmon season. Catching it is the game.</em>
+            </figcaption>
+          </figure>
+          <figure class="plate">
+            <img src="images/drying-rack.jpg" alt="Salmon drying on wooden pole racks beside the Chilkoot River, Alaska, 1911" loading="lazy" />
+            <figcaption>Build the machine that keeps it
+              <em>A field drying rack, Chilkoot River, 1911. Teams that build well, eat well.</em>
+            </figcaption>
+          </figure>
+        </div>
+        <p class="small">
+          Safety design: a three-day calorie floor, with sealed emergency rations riding along.
+          Nobody starves—we are choosing to earn dinner.
+        </p>
         <div class="quote">
           The goal is to test yourself—not damage friendships or turn hunger into humiliation.
         </div>
@@ -499,7 +644,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 006 // Who Belongs Here</div>
+        <div class="section-no">Entry 007 // Who Belongs Here</div>
         <h2>What do you bring?</h2>
         <p class="lead">
           Sean’s answer: <strong>figuring shit out and no quit.</strong> Yours may be expert
@@ -529,27 +674,65 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 007 // The Ten-Item Standard</div>
+        <div class="section-no">Entry 008 // The Constitution</div>
+        <h2>Ten filters every decision passes through.</h2>
+        <p class="lead">
+          Site selection, rules, gear calls, challenge design—if a decision fails one of these,
+          it gets rethought.
+        </p>
+        <div class="rules">
+          <div class="rule">Remote enough to feel like another world.</div>
+          <div class="rule">Beautiful enough to stop talking.</div>
+          <div class="rule">Legal permission to build real primitive shelters.</div>
+          <div class="rule">Fishing matters.</div>
+          <div class="rule">Fresh water nearby.</div>
+          <div class="rule">No site without a fast, credible extraction plan.</div>
+          <div class="rule">Very few mosquitoes.</div>
+          <div class="rule">No cell phones.</div>
+          <div class="rule">Leave the site better than we found it.</div>
+          <div class="rule">Friendships matter more than winning.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-no">Entry 009 // The Ten-Item Standard</div>
         <h2>Ten survival items. Safety gear does not count.</h2>
         <p class="lead">
-          Each team or participant will work within a defined ten-item survival kit. Exact sharing
-          rules are still being designed, but the starting example is:
+          Nobody is sleeping wet in the rain with ten objects. Safety and warmth basics come free.
+          The game only starts after you are equipped to be out there.
         </p>
-        <div class="grid-3">
-          <div class="card"><h3>01–03</h3><p><strong>Fixed-blade knife</strong><br><strong>Axe or hatchet</strong><br><strong>Folding saw</strong></p></div>
-          <div class="card"><h3>04–06</h3><p><strong>Ferro rod</strong><br><strong>Metal cooking pot</strong><br><strong>Fishing kit</strong></p></div>
-          <div class="card"><h3>07–10</h3><p><strong>Paracord</strong><br><strong>Tarp</strong><br><strong>Sleeping pad</strong><br><strong>Metal cup</strong></p></div>
+        <div class="gear-split">
+          <div class="gear-safe">
+            <h3>Not counted</h3>
+            <ul>
+              <li>Clothing, boots &amp; rain layers</li>
+              <li>Life jackets where needed</li>
+              <li>First aid &amp; emergency medical gear</li>
+              <li>Satellite communication</li>
+              <li>Required bear protection</li>
+              <li>Other mandated safety equipment</li>
+            </ul>
+          </div>
+          <div class="gear-items">
+            <div class="gear-begin">The game begins — ten survival items</div>
+            <div class="grid-3">
+              <div class="card"><h3>01–03</h3><p><strong>Fixed-blade knife</strong><br><strong>Axe or hatchet</strong><br><strong>Folding saw</strong></p></div>
+              <div class="card"><h3>04–06</h3><p><strong>Ferro rod</strong><br><strong>Metal cooking pot</strong><br><strong>Fishing kit</strong></p></div>
+              <div class="card"><h3>07–10</h3><p><strong>Paracord</strong><br><strong>Tarp</strong><br><strong>Sleeping pad</strong><br><strong>Metal cup</strong></p></div>
+            </div>
+          </div>
         </div>
         <p class="small">
-          Clothing, boots, life jackets where needed, emergency medical gear, satellite communication,
-          required bear protection, and other organizer-mandated safety equipment remain outside the ten-item game.
+          The ten items above are the starting example. Exact kit and sharing rules are still being designed.
         </p>
       </div>
     </section>
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 008 // Capture Everything</div>
+        <div class="section-no">Entry 010 // Capture Everything</div>
         <h2>Every contestant becomes part of the camera crew.</h2>
         <p class="lead">
           The goal is not just to survive the expedition. It is to preserve the entire story from
@@ -572,6 +755,13 @@
             <p>Each team records daily video journals covering hunger, morale, conflict, progress, strategy, team dynamics, and what they think Expedition Command may do next.</p>
           </div>
         </div>
+        <div class="notice">
+          <strong>Who sees the footage:</strong> raw footage goes to an AI or human editor with one
+          brief—cut a memorable 5–7 minutes per day, more only if something is truly compelling.
+          Show the emotion; put nobody in a bad light. Vulnerability is fine, and every participant
+          re-approves their own clips before the final edit. The film belongs to the expedition and
+          our families—it goes nowhere else unless the group decides otherwise.
+        </div>
         <div class="quote">
           Nobody has to stop living the moment just to pull out a phone and film it.
         </div>
@@ -580,23 +770,35 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 009 // Expedition Command</div>
-        <h2>The game watches, adapts, and talks back.</h2>
+        <div class="section-no">Entry 011 // Expedition Command</div>
+        <h2>An AI runs the game.</h2>
         <p class="lead">
-          A remote AI Expedition Command reviews scheduled updates, photos, journals, GPS progress,
-          challenge results, weather, and family messages—then helps shape a one-of-a-kind expedition.
+          Expedition Command is an AI agent we will build before departure. It reviews scheduled
+          updates, photos, journals, GPS progress, challenge results, weather, and family
+          messages—then shapes a one-of-a-kind expedition around what is actually happening.
         </p>
         <div class="grid-3">
           <div class="card"><h3>Dynamic missions</h3><p>Secret tasks, exploration objectives, engineering challenges, team trades, cooperation missions, and surprise rewards based on what is actually happening.</p></div>
           <div class="card"><h3>Twice-daily windows</h3><p>One controlled phone and Starlink station are checked at scheduled times for family messages, weather, uploads, and Expedition Command transmissions.</p></div>
           <div class="card"><h3>Family follow-along</h3><p>Approved photos, clips, status updates, maps, scores, and daily recaps are published to a private app for friends and family.</p></div>
         </div>
+        <div class="crate">
+          <div class="crate-stamp">Property of<br>Expedition Command<br>— do not open —<br>until authorized</div>
+          <p>Mystery crates are cached and earned in the field. Inside might be coffee, chocolate,
+          a premium lure, dry socks, steak seasoning, a better axe, playing cards—or nothing you
+          expected. Only Expedition Command knows where they are, what they hold, and who has
+          earned one.</p>
+        </div>
+        <div class="quote">
+          Nobody knows tomorrow's challenge. Nobody knows where the crates are hidden.
+          Nobody knows the running score. Only Expedition Command.
+        </div>
       </div>
     </section>
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 010 // Expedition Design</div>
+        <div class="section-no">Entry 012 // Expedition Design</div>
         <h2>What you are signing up for.</h2>
         <div class="rules">
           <div class="rule">Ten adults total, normally divided into two or three teams of three to five.</div>
@@ -621,7 +823,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 011 // Mission Timeline</div>
+        <div class="section-no">Entry 013 // Mission Timeline</div>
         <h2>September 2027 is the finish line. Planning is the first challenge.</h2>
         <div class="timeline">
           <div class="mile"><strong>Now–Winter 2026</strong><div>Recruit the nine. Identify strengths. Build the founding group. Start Crown land, private property, island, lodge, outfitter, boat-charter, and helicopter-access outreach.</div></div>
@@ -633,9 +835,114 @@
       </div>
     </section>
 
+    <section>
+      <div class="wrap">
+        <div class="section-no">Entry 014 // What Success Looks Like</div>
+        <h2>Winning is the smallest prize.</h2>
+        <p class="lead">
+          There will be scores, missions, mystery crates, and bragging rights—and somebody will
+          win them. But success was never the scoreboard. Success is everyone coming home with:
+        </p>
+        <div class="qualities">
+          <span class="quality">Deeper friendships</span>
+          <span class="quality">Stories for decades</span>
+          <span class="quality">New skills</span>
+          <span class="quality">Earned confidence</span>
+          <span class="quality">A documentary of the whole thing</span>
+          <span class="quality">A tradition worth repeating</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-no">Entry 015 // Questions You Are Already Asking</div>
+        <h2>Straight answers.</h2>
+        <p class="lead">
+          Anything not covered here is still being designed—ask, and help design it.
+        </p>
+        <div style="margin-top:30px">
+          <details class="faq">
+            <summary>What does this actually cost me?</summary>
+            <p>Rough planning numbers, not quotes. The ten-item kit: $0 if you borrow everything,
+            roughly $300–$500 buying the core tools new—and used gear cuts that fast. Clothing,
+            boots, and rain gear—most of us already own it; borrow before you buy. The region is
+            drive-to by design, so no airfare. Boat charter gets split; if helicopter access is
+            required, Sean subsidizes it. Rescue/evacuation insurance is the one line item everyone
+            should expect—plan on $100–$200 a year, and we will pick one as a group.</p>
+          </details>
+          <details class="faq">
+            <summary>What happens if someone gets seriously hurt?</summary>
+            <p>We will not pick a site we cannot get someone out of fast—boat or helicopter,
+            depending on where we land. Weather can slow that down, which is why satellite
+            communication is on hand at all times, everyone gets medical screening before
+            departure, and everyone carries rescue/evacuation insurance. If a real evacuation
+            ever costs money that insurance does not cover, how we share that cost is a group
+            conversation we will have before anyone steps on a boat.</p>
+          </details>
+          <details class="faq">
+            <summary>Who sees the footage?</summary>
+            <p>The expedition and our families—that is it. Raw footage goes to an AI or human
+            editor briefed to cut a memorable 5–7 minutes per day, showing real emotion without
+            putting anyone in a bad light. Vulnerability is fine. You personally re-approve your
+            clips before the final edit, and nothing goes further unless the group decides
+            otherwise.</p>
+          </details>
+          <details class="faq">
+            <summary>How do I disappear for ten days?</summary>
+            <p>If you have built your life well, the people around you will feel your absence—but
+            nothing should crumble while you are gone. Expect real work in the weeks before
+            departure to get your ducks in a row. And the bat phone gets checked twice a day: if
+            home truly needs you, you will know.</p>
+          </details>
+          <details class="faq">
+            <summary>What if I suck at survival? What if I have never fished?</summary>
+            <p>Nobody is expected to arrive an expert—talents can be built in the field, and there
+            is a one-night skills test in spring 2027 to practice before it counts. The only real
+            ask is picking a skill and committing to improve it before September. Someone will
+            teach you to fish.</p>
+          </details>
+          <details class="faq">
+            <summary>What if nobody catches anything?</summary>
+            <p>There is a three-day calorie floor, and sealed emergency rations travel with the
+            expedition—nobody is going to actually starve out there. But we are not going into
+            this with a failure mindset: the fish are there, and catching them is the game.</p>
+          </details>
+          <details class="faq">
+            <summary>What if it rains the whole trip?</summary>
+            <p>It might. September in the Pacific Northwest can rain five days straight. We build
+            better shelters and keep going—the rain is where the stories come from.</p>
+          </details>
+          <details class="faq">
+            <summary>How are teams picked?</summary>
+            <p>Not decided yet. Could be drawing straws, random assignment by Expedition Command,
+            or captains. If you have a strong opinion, this is exactly the kind of thing early
+            joiners get to shape.</p>
+          </details>
+          <details class="faq">
+            <summary>Can I leave early or quit the food game?</summary>
+            <p>Yes to both, any time, no shame. Tap out of the food game and you stay a full
+            expedition member on the supported-food track. Need to leave entirely? Getting you out is a design requirement, not a favor.</p>
+          </details>
+          <details class="faq">
+            <summary>When do I have to commit?</summary>
+            <p>Not today. Right now is about declaring interest and helping with setup—site
+            scouting, rules design, gear research. Once the site is secured, spots get offered,
+            starting with the people least likely to quit or complain. Raising your hand early
+            and helping build it is how you end up at the top of that list.</p>
+          </details>
+          <details class="faq">
+            <summary>What if only four people say yes?</summary>
+            <p>It scales down—four to six works nearly as well. But the ideal is the full ten,
+            because ten people around a fire in the wilderness playing deception and board games is the dream.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section id="enlist">
       <div class="wrap">
-        <div class="section-no">Entry 012 // Enlistment Record</div>
+        <div class="section-no">Entry 016 // Enlistment Record</div>
         <h2>Request one of the nine places.</h2>
         <p class="lead">
           This is not a binding commitment yet. It is a declaration that a 10-day expedition in
@@ -645,11 +952,11 @@
         <form id="signupForm">
           <label>
             Name
-            <input required name="name" placeholder="Your name" />
+            <input required name="name" placeholder="Your name" autocomplete="name" />
           </label>
           <label>
             Best contact
-            <input required name="contact" placeholder="Phone or email" />
+            <input required name="contact" placeholder="Phone or email" autocomplete="on" />
           </label>
 
           <label class="full">
@@ -657,8 +964,8 @@
             <input required name="quality" placeholder="Example: figuring shit out and no quit" />
           </label>
 
-          <div class="full">
-            <label>Select your strongest expedition skills</label>
+          <fieldset class="full">
+            <legend>Select your strongest expedition skills</legend>
             <div class="skill-grid">
               <label><input type="checkbox" name="skills" value="Fishing"> Fishing</label>
               <label><input type="checkbox" name="skills" value="Shelter building"> Shelter building</label>
@@ -673,7 +980,7 @@
               <label><input type="checkbox" name="skills" value="Leadership"> Leadership</label>
               <label><input type="checkbox" name="skills" value="Morale"> Morale</label>
             </div>
-          </div>
+          </fieldset>
 
           <label>
             Preferred expedition role
@@ -700,7 +1007,7 @@
           <label>
             Access tolerance
             <select name="access">
-              <option>Charter boat</option>
+              <option>Charter boat or floatplane</option>
               <option>Helicopter</option>
               <option>Up to a 10-mile hike</option>
               <option>Any of the above</option>
@@ -724,14 +1031,15 @@
           </div>
 
           <div class="full notice">
-            Submitting this demo saves your entry only on this device. Before publishing the site,
-            connect the form to Google Forms, Airtable, Tally, Typeform, Supabase, or another backend.
+            Heads up: this form currently saves your entry only on this device while the roster
+            system gets built. After you submit, screenshot your entry and send it to Sean so it
+            actually lands on his desk.
           </div>
 
           <button class="btn primary full" type="submit">Enter the expedition journal</button>
         </form>
 
-        <div id="success" class="success">Entry recorded. The challenge has begun.</div>
+        <div id="success" class="success" role="status" aria-live="polite">Entry recorded on this device. The challenge has begun—now screenshot this and send it to Sean.</div>
         <div id="roster"></div>
       </div>
     </section>
@@ -818,7 +1126,7 @@
       form.reset();
       success.style.display = 'block';
       renderRoster();
-      setTimeout(() => success.style.display = 'none', 4500);
+      
     });
 
     renderRoster();

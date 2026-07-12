@@ -164,6 +164,41 @@
       letter-spacing:.08em;
       background:rgba(255,255,255,.22);
     }
+    .plate-hero{margin:34px 0 0}
+    .plates{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+    figure.plate{
+      margin:0;
+      background:var(--white);
+      border:1px solid var(--line);
+      padding:10px 10px 12px;
+      box-shadow:0 8px 22px rgba(23,25,18,.18);
+    }
+    .plates figure.plate:nth-child(odd){transform:rotate(-.6deg)}
+    .plates figure.plate:nth-child(even){transform:rotate(.5deg)}
+    .plate img{
+      width:100%;
+      height:230px;
+      object-fit:cover;
+      display:block;
+      filter:saturate(.9) contrast(1.03) sepia(.1);
+    }
+    .plate-hero img{height:clamp(260px,48vw,460px)}
+    .plate figcaption{
+      padding-top:10px;
+      font:700 .68rem Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+    }
+    .plate figcaption em{
+      display:block;
+      margin-top:4px;
+      font:italic .85rem Georgia,serif;
+      text-transform:none;
+      letter-spacing:0;
+      color:#4f5149;
+    }
+    .credits{margin-top:26px;font-size:.78rem;color:#5a5c52;line-height:1.6}
+    .credits a{color:#5a5c52}
     .timeline{
       margin-top:34px;
       display:grid;
@@ -257,7 +292,8 @@
       border-left:4px solid var(--forest);
     }
     @media(max-width:800px){
-      .status,.grid-3,.rules,form,.skill-grid{grid-template-columns:1fr}
+      .status,.grid-3,.rules,form,.skill-grid,.plates{grid-template-columns:1fr}
+      .plate img{height:220px}
       .mile,.roster-card{grid-template-columns:1fr}
       .full{grid-column:auto}
       section{padding:58px 0}
@@ -360,7 +396,78 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 004 // The Food Survival Game</div>
+        <div class="section-no">Entry 004 // Field Plates</div>
+        <h2>The kind of country we are scouting.</h2>
+        <p class="lead">
+          The site is not secured yet, so these are reference photographs of candidate terrain—
+          North Cascades high country, the roadless head of Lake Chelan, Vancouver Island's
+          wilderness coast, and boat-access inlets in coastal British Columbia—plus the kind of
+          primitive structures teams will actually build.
+        </p>
+
+        <figure class="plate plate-hero">
+          <img src="images/shuksan.jpg" alt="Mount Shuksan and its glaciers reflected in Picture Lake, North Cascades, Washington" loading="lazy" />
+          <figcaption>Plate I — Mount Shuksan, North Cascades, WA
+            <em>The scale of terrain in play. Glaciated peaks, timber, and cold clear water.</em>
+          </figcaption>
+        </figure>
+
+        <div class="plates">
+          <figure class="plate">
+            <img src="images/cascade-pass.jpg" alt="Jagged ridgeline and snowfields above Cascade Pass, North Cascades National Park" loading="lazy" />
+            <figcaption>Plate II — Cascade Pass, WA
+              <em>High-route country above the camps.</em>
+            </figcaption>
+          </figure>
+          <figure class="plate">
+            <img src="images/stehekin.jpg" alt="Lake Chelan stretching between forested mountains near Stehekin, Washington" loading="lazy" />
+            <figcaption>Plate III — Head of Lake Chelan, WA
+              <em>Stehekin country. No roads in—boat or trail only.</em>
+            </figcaption>
+          </figure>
+          <figure class="plate">
+            <img src="images/mystic-beach.jpg" alt="Tents on a driftwood-strewn gravel beach below coastal forest, Mystic Beach, Vancouver Island" loading="lazy" />
+            <figcaption>Plate IV — Wilderness coast, Vancouver Island, BC
+              <em>Beach camps, fog, driftwood, and tidewater food sources.</em>
+            </figcaption>
+          </figure>
+          <figure class="plate">
+            <img src="images/desolation-sound.jpg" alt="Calm protected inlet with rocky shoreline and dense evergreen forest, Desolation Sound, BC" loading="lazy" />
+            <figcaption>Plate V — Desolation Sound, BC
+              <em>Charter-boat waters. Protected inlets, fishing, and islands.</em>
+            </figcaption>
+          </figure>
+          <figure class="plate">
+            <img src="images/shelter-sticks.jpg" alt="Tipi-style shelter frame built from dozens of long branches leaned against a tree" loading="lazy" />
+            <figcaption>Plate VI — Day one
+              <em>A shelter frame from nothing but branches and stubbornness.</em>
+            </figcaption>
+          </figure>
+          <figure class="plate">
+            <img src="images/shelter-leanto.jpg" alt="Log lean-to shelter with stone fire ring in misty conifer forest" loading="lazy" />
+            <figcaption>Plate VII — Where building can go
+              <em>A proper log lean-to with a stone fire ring. The craftsmanship bar.</em>
+            </figcaption>
+          </figure>
+        </div>
+
+        <p class="credits">
+          Reference photographs via Wikimedia Commons:
+          <a href="https://commons.wikimedia.org/wiki/File:Mount_Shuksan_reflected_in_Picture_Lake.jpg">Ron Clausen</a> (CC BY-SA 4.0),
+          <a href="https://commons.wikimedia.org/wiki/File:Cascade_Pass_Trail_at_North_Cascades_in_Washington_05.jpg">Jeffhollett</a> (CC BY-SA 4.0),
+          <a href="https://commons.wikimedia.org/wiki/File:Stehekin_Chelan.JPG">David Ansley</a> (CC BY 2.5),
+          <a href="https://commons.wikimedia.org/wiki/File:Campsite_at_Mystic_Beach,_Vancouver_Island,_Canada.jpg">Michal Klajban</a> (CC BY-SA 4.0),
+          <a href="https://commons.wikimedia.org/wiki/File:Grace_Harbour,_Desolation_Sound_Marine_Park,_BC.jpg">A.Davey</a> (CC BY 2.0),
+          <a href="https://commons.wikimedia.org/wiki/File:Primitive_Shelter_(37602302).jpeg">Waqas Ahmed</a> (CC BY-SA 3.0),
+          <a href="https://commons.wikimedia.org/wiki/File:Lean_to.jpg">Geotek</a> (public domain).
+          These show candidate regions and example builds—not the final site.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-no">Entry 005 // The Food Survival Game</div>
         <h2>Stay in. Tap out. No shame either way.</h2>
         <p class="lead">
           The expedition is designed as a real food-survival game. Active players rely on what
@@ -392,7 +499,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 005 // Who Belongs Here</div>
+        <div class="section-no">Entry 006 // Who Belongs Here</div>
         <h2>What do you bring?</h2>
         <p class="lead">
           Sean’s answer: <strong>figuring shit out and no quit.</strong> Yours may be expert
@@ -422,7 +529,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 006 // The Ten-Item Standard</div>
+        <div class="section-no">Entry 007 // The Ten-Item Standard</div>
         <h2>Ten survival items. Safety gear does not count.</h2>
         <p class="lead">
           Each team or participant will work within a defined ten-item survival kit. Exact sharing
@@ -442,7 +549,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 007 // Capture Everything</div>
+        <div class="section-no">Entry 008 // Capture Everything</div>
         <h2>Every contestant becomes part of the camera crew.</h2>
         <p class="lead">
           The goal is not just to survive the expedition. It is to preserve the entire story from
@@ -473,7 +580,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 008 // Expedition Command</div>
+        <div class="section-no">Entry 009 // Expedition Command</div>
         <h2>The game watches, adapts, and talks back.</h2>
         <p class="lead">
           A remote AI Expedition Command reviews scheduled updates, photos, journals, GPS progress,
@@ -489,7 +596,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 009 // Expedition Design</div>
+        <div class="section-no">Entry 010 // Expedition Design</div>
         <h2>What you are signing up for.</h2>
         <div class="rules">
           <div class="rule">Ten adults total, normally divided into two or three teams of three to five.</div>
@@ -514,7 +621,7 @@
 
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 010 // Mission Timeline</div>
+        <div class="section-no">Entry 011 // Mission Timeline</div>
         <h2>September 2027 is the finish line. Planning is the first challenge.</h2>
         <div class="timeline">
           <div class="mile"><strong>Now–Winter 2026</strong><div>Recruit the nine. Identify strengths. Build the founding group. Start Crown land, private property, island, lodge, outfitter, boat-charter, and helicopter-access outreach.</div></div>
@@ -528,7 +635,7 @@
 
     <section id="enlist">
       <div class="wrap">
-        <div class="section-no">Entry 011 // Enlistment Record</div>
+        <div class="section-no">Entry 012 // Enlistment Record</div>
         <h2>Request one of the nine places.</h2>
         <p class="lead">
           This is not a binding commitment yet. It is a declaration that a 10-day expedition in

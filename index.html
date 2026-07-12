@@ -669,6 +669,21 @@
           <span class="quality">Storyteller</span>
           <span class="quality">Wild card</span>
         </div>
+        <h3 style="margin-top:44px;font-size:1.5rem">Prep like it counts. Start now.</h3>
+        <p class="small" style="max-width:840px">
+          None of this requires a wilderness. It requires a backyard, a local lake, and eighteen
+          months of not putting it off.
+        </p>
+        <div class="rules">
+          <div class="rule">Read the <em>SAS Survival Handbook</em> (John "Lofty" Wiseman). Consider it the expedition's unofficial textbook.</div>
+          <div class="rule">Light ten fires with a ferro rod. Then light one in the rain.</div>
+          <div class="rule">Learn five knots until your hands know them without your eyes.</div>
+          <div class="rule">Fish local water, and learn to clean and cook what you catch.</div>
+          <div class="rule">Take a wilderness first aid course. One medic is not enough medics.</div>
+          <div class="rule">Hike ten miles with a loaded pack, at least once, before spring 2027.</div>
+          <div class="rule">Spend one bad-weather night out under a tarp you rigged yourself.</div>
+          <div class="rule">Get honest hours on a knife, an axe, and a saw before they matter.</div>
+        </div>
       </div>
     </section>
 
@@ -788,6 +803,14 @@
           a premium lure, dry socks, steak seasoning, a better axe, playing cards—or nothing you
           expected. Only Expedition Command knows where they are, what they hold, and who has
           earned one.</p>
+        </div>
+        <div class="notice">
+          <strong>In design — Day 6: the Oracle opens.</strong> Midway through the expedition,
+          Expedition Command may grant a limited window to scan plants, ask questions, and get
+          AI advice on whatever has been stumping you—an identification, a build problem, a
+          fishing strategy. Questions are a resource: spend them well. One rule is already
+          locked: AI advice can rule things <em>out</em>, never <em>in</em>. Nothing gets eaten
+          on the Oracle's word alone.
         </div>
         <div class="quote">
           Nobody knows tomorrow's challenge. Nobody knows where the crates are hidden.
@@ -1030,7 +1053,7 @@
             be subsidized so it does not prevent the right teammates from joining.
           </div>
 
-          <div class="full notice">
+          <div class="full notice" id="formNotice">
             Heads up: this form currently saves your entry only on this device while the roster
             system gets built. After you submit, screenshot your entry and send it to Sean so it
             actually lands on his desk.
@@ -1065,9 +1088,19 @@
   </footer>
 
   <script>
+    // Paste your Formspree form endpoint here, e.g. 'https://formspree.io/f/abcdwxyz'.
+    // Empty string = entries save to this device only.
+    const FORMSPREE_ENDPOINT = '';
+
     const form = document.getElementById('signupForm');
     const success = document.getElementById('success');
     const roster = document.getElementById('roster');
+    const formNotice = document.getElementById('formNotice');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    if (FORMSPREE_ENDPOINT && formNotice) {
+      formNotice.textContent = 'Submissions go straight to Sean. A copy also stays on this device below.';
+    }
 
     function loadEntries(){
       return JSON.parse(localStorage.getItem('expedition40_entries') || '[]');
@@ -1105,7 +1138,7 @@
       })[m]);
     }
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const fd = new FormData(form);
       const entry = {
@@ -1120,13 +1153,36 @@
         improve: fd.get('improve'),
         submittedAt: new Date().toISOString()
       };
+
+      let sent = false;
+      if (FORMSPREE_ENDPOINT) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Transmitting…';
+        try {
+          const res = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...entry, skills: entry.skills.join(', ') })
+          });
+          sent = res.ok;
+        } catch (e) {
+          sent = false;
+        }
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enter the expedition journal';
+      }
+
       const entries = loadEntries();
       entries.push(entry);
       saveEntries(entries);
       form.reset();
+      if (FORMSPREE_ENDPOINT && sent) {
+        success.textContent = 'Entry transmitted to Expedition Command. The challenge has begun.';
+      } else if (FORMSPREE_ENDPOINT && !sent) {
+        success.textContent = 'Transmission failed—your entry is saved on this device. Screenshot it and send it to Sean.';
+      }
       success.style.display = 'block';
       renderRoster();
-      
     });
 
     renderRoster();

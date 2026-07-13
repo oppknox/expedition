@@ -247,6 +247,21 @@
     }
     .gear-items .gear-list{margin-top:0}
     .gear-list .rule{padding:13px 0;font-size:1.05rem}
+    .gear-cat{
+      font:700 .72rem Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--rust);
+      margin:22px 0 2px;
+    }
+    .gear-cat:first-of-type{margin-top:0}
+    .gear-items .gear-cat + .gear-list .rule:first-child{border-top:none}
+    .gear-note{
+      font-size:.95rem;
+      color:var(--rust);
+      font-weight:700;
+      margin-left:8px;
+    }
     .crate{
       margin-top:34px;
       display:grid;
@@ -742,10 +757,11 @@
     <section>
       <div class="wrap">
         <div class="section-no">Entry 009 // The Ten-Item Standard</div>
-        <h2>Ten survival items. Safety gear does not count.</h2>
+        <h2>Pick any ten. Safety gear does not count.</h2>
         <p class="lead">
           Nobody is sleeping wet in the rain with ten objects. Safety and warmth basics come free.
-          The game only starts after you are equipped to be out there.
+          The game only starts after you are equipped to be out there—and how you get there is your call.
+          Everyone builds their own kit from the same approved menu.
         </p>
         <div class="gear-split">
           <div class="gear-safe">
@@ -760,23 +776,52 @@
             </ul>
           </div>
           <div class="gear-items">
-            <div class="gear-begin">The game begins — ten survival items</div>
+            <div class="gear-begin">The game begins — pick any ten from the menu</div>
+
+            <div class="gear-cat">Cutting &amp; tools</div>
             <div class="rules gear-list">
               <div class="rule"><strong>Fixed-blade knife</strong></div>
               <div class="rule"><strong>Axe or hatchet</strong></div>
               <div class="rule"><strong>Folding saw</strong></div>
+              <div class="rule"><strong>Multi-tool</strong></div>
+              <div class="rule"><strong>Sharpening stone</strong></div>
+            </div>
+
+            <div class="gear-cat">Fire, cooking &amp; water</div>
+            <div class="rules gear-list">
               <div class="rule"><strong>Ferro rod</strong></div>
               <div class="rule"><strong>Metal cooking pot</strong></div>
-              <div class="rule"><strong>Fishing kit</strong></div>
-              <div class="rule"><strong>Paracord</strong></div>
-              <div class="rule"><strong>Tarp</strong></div>
-              <div class="rule"><strong>Sleeping pad</strong></div>
               <div class="rule"><strong>Metal cup</strong></div>
+              <div class="rule"><strong>Steel frying pan</strong></div>
+              <div class="rule"><strong>Water filter</strong> <span class="gear-note">— or just boil in the pot</span></div>
+            </div>
+
+            <div class="gear-cat">Fishing &amp; hunting</div>
+            <div class="rules gear-list">
+              <div class="rule"><strong>Fishing kit</strong> <span class="gear-note">line &amp; hooks</span></div>
+              <div class="rule"><strong>Rod &amp; reel</strong></div>
+              <div class="rule"><strong>Small-gauge gill net</strong></div>
+              <div class="rule"><strong>Bow &amp; arrows</strong></div>
+              <div class="rule"><strong>Slingshot</strong></div>
+              <div class="rule"><strong>Roll of snare wire</strong></div>
+            </div>
+
+            <div class="gear-cat">Shelter &amp; bedding</div>
+            <div class="rules gear-list">
+              <div class="rule"><strong>Tarp</strong></div>
+              <div class="rule"><strong>Paracord</strong></div>
+              <div class="rule"><strong>Sleeping pad</strong></div>
+              <div class="rule"><strong>Sleeping bag</strong></div>
+              <div class="rule"><strong>Bivy cover</strong></div>
+              <div class="rule"><strong>Hammock</strong></div>
             </div>
           </div>
         </div>
         <p class="small">
-          The ten items above are the starting example. Exact kit and sharing rules are still being designed.
+          The menu above is a working draft, not final. Pick ten and everyone starts on the same footing—
+          a fisher-first kit and a shelter-first kit are both fair game. Water is one of the choices:
+          carry a filter if you want it, or leave the slot for something else and purify by boiling in the pot.
+          Exact menu, sharing, and per-team rules are still being designed.
         </p>
       </div>
     </section>

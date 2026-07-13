@@ -391,8 +391,20 @@
     @media(max-width:800px){
       .grid-3,.rules,form,.skill-grid,.gear-split,.crate{grid-template-columns:1fr}
       .status{grid-template-columns:repeat(2,1fr)}
-      .plates,.plates--two{grid-template-columns:1fr}
-      .plates:not(.plates--two) figure.plate:last-child:nth-child(3n+2){grid-column:auto}
+      .plates,.plates--two{
+        display:flex;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        gap:14px;
+        padding:6px 2px 14px;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+      }
+      .plates::-webkit-scrollbar{display:none}
+      .plates figure.plate{
+        flex:0 0 82vw;
+        scroll-snap-align:center;
+      }
       .plate img{height:220px}
       .plate-hero img{height:clamp(240px,60vw,320px)}
       .crate-stamp{white-space:normal;justify-self:start}

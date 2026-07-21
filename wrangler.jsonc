@@ -4,10 +4,18 @@
   "compatibility_date": "2026-07-20",
   "assets": {
     "directory": ".",
-    "html_handling": "auto-trailing-slash"
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*", "/roster"]
   },
   "send_email": [
     { "name": "NOTIFY", "destination_address": "seanknox@outlook.com" }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "expedition40",
+      "database_id": "c4d6a004-d3ac-49d1-b20a-96278069d567"
+    }
   ],
   "routes": [
     { "pattern": "expedition40.com", "custom_domain": true },

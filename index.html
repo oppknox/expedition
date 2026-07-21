@@ -435,6 +435,15 @@
     details.more summary::-webkit-details-marker{display:none}
     details.more summary:before{content:"+ "}
     details.more[open] summary:before{content:"– "}
+    .more-hint{
+      float:right;
+      font:700 .62rem Arial,sans-serif;
+      letter-spacing:.1em;
+      border:1px solid var(--line);
+      padding:3px 8px;
+      color:#5a5c52;
+    }
+    details.more[open] .more-hint{display:none}
     details.more .more-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
@@ -1164,7 +1173,7 @@
           </label>
 
           <details class="more">
-            <summary>Strengthen your case — optional, two minutes</summary>
+            <summary>Strengthen your case — optional, two minutes <span class="more-hint">tap to expand</span></summary>
             <div class="more-grid">
           <fieldset class="full">
             <legend>Select your strongest expedition skills</legend>
@@ -1187,6 +1196,7 @@
           <label>
             Preferred expedition role
             <select name="role">
+              <option value="" selected>Choose a role (or skip)</option>
               <option>Builder / engineer</option>
               <option>Fisher / food provider</option>
               <option>Navigator / explorer</option>
@@ -1200,6 +1210,7 @@
           <label>
             Food-survival preference
             <select name="food">
+              <option value="" selected>Choose a food track (or skip)</option>
               <option>I want the full food-survival challenge</option>
               <option>I am interested, but undecided</option>
               <option>I would opt out and bring food</option>
@@ -1209,6 +1220,7 @@
           <label>
             Access tolerance
             <select name="access">
+              <option value="" selected>Choose access tolerance (or skip)</option>
               <option>Charter boat or floatplane</option>
               <option>Helicopter</option>
               <option>Up to a 10-mile hike</option>

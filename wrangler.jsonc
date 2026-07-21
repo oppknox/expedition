@@ -1,0 +1,12 @@
+{
+  "name": "expedition40",
+  "compatibility_date": "2026-07-20",
+  "assets": {
+    "directory": ".",
+    "html_handling": "auto-trailing-slash"
+  },
+  "routes": [
+    { "pattern": "expedition40.com", "custom_domain": true },
+    { "pattern": "www.expedition40.com", "custom_domain": true }
+  ]
+}

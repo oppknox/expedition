@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="only light" />
   <title>Expedition 40 — September 2027</title>
+  <link rel="canonical" href="https://expedition40.com/" />
   <link rel="icon" href="favicon.ico" sizes="48x48" />
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png" />
@@ -13,22 +15,24 @@
   <meta property="og:site_name" content="Expedition 40" />
   <meta property="og:title" content="Expedition 40 — September 2027" />
   <meta property="og:description" content="Nine friends wanted. Ten days in the Pacific Northwest wilderness. Primitive shelters, food survival, mystery crates, and a story we will tell for decades." />
-  <meta property="og:url" content="https://oppknox.github.io/expedition/" />
-  <meta property="og:image" content="https://oppknox.github.io/expedition/images/og-card.jpg" />
+  <meta property="og:url" content="https://expedition40.com/" />
+  <meta property="og:image" content="https://expedition40.com/images/og-card.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Expedition 40 — September 2027" />
   <meta name="twitter:description" content="Nine friends wanted. Ten days in the Pacific Northwest wilderness. The challenge starts now." />
-  <meta name="twitter:image" content="https://oppknox.github.io/expedition/images/og-card.jpg" />
+  <meta name="twitter:image" content="https://expedition40.com/images/og-card.jpg" />
   <style>
     :root{
+      color-scheme: only light;
       --ink:#171912;
       --paper:#e9e2cf;
       --paper-dark:#d2c7aa;
       --forest:#203328;
       --forest-2:#304b38;
       --rust:#9b4f2f;
+      --rust-text:#8a4325;
       --gold:#b99a58;
       --line:rgba(23,25,18,.22);
       --white:#f7f4ea;
@@ -43,19 +47,24 @@
         #1d2e23;
       font-family: Georgia, "Times New Roman", serif;
     }
-    body:before{
+    .journal{position:relative}
+    .journal:before{
       content:"";
-      position:fixed; inset:0; pointer-events:none;
-      opacity:.07;
+      position:absolute; inset:0; pointer-events:none;
+      opacity:.05;
       background-image:
         repeating-linear-gradient(0deg,transparent,transparent 3px,#000 4px),
         repeating-linear-gradient(90deg,transparent,transparent 5px,#fff 6px);
       mix-blend-mode:overlay;
     }
+    @media (prefers-contrast: more){
+      .journal:before{display:none}
+    }
     a{color:inherit}
     .wrap{width:min(1120px,92vw);margin:auto}
     .hero{
       min-height:92vh;
+      min-height:92svh;
       color:var(--white);
       display:grid;
       align-items:center;
@@ -106,13 +115,17 @@
       background:transparent;
       color:inherit;
     }
-    .btn.primary{background:var(--rust);border-color:var(--rust);color:white}
+    .btn.primary{background:var(--rust-text);border-color:var(--rust-text);color:white}
     .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .btn:active{transform:translateY(1px);filter:brightness(.95)}
+    @media (prefers-reduced-motion: reduce){
+      .btn,.btn:hover,.btn:active{transform:none;transition:none}
+    }
     .status{
       margin-top:48px;
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:10px;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px 10px;
       max-width:820px;
     }
     .status div{
@@ -132,7 +145,7 @@
     }
     .section-no{
       font:700 .72rem Arial,sans-serif;
-      letter-spacing:.18em;text-transform:uppercase;color:var(--rust)
+      letter-spacing:.18em;text-transform:uppercase;color:var(--rust-text)
     }
     h2{
       font-size:clamp(2.2rem,5vw,4.8rem);
@@ -151,8 +164,8 @@
     .card h3{font-size:1.35rem;margin-top:0}
     .stamp{
       display:inline-block;
-      border:2px solid var(--rust);
-      color:var(--rust);
+      border:2px solid var(--rust-text);
+      color:var(--rust-text);
       font:700 .68rem Arial,sans-serif;
       text-transform:uppercase;
       letter-spacing:.14em;
@@ -242,7 +255,7 @@
       font:700 .72rem Arial,sans-serif;
       text-transform:uppercase;
       letter-spacing:.2em;
-      color:var(--rust);
+      color:var(--rust-text);
       margin:26px 0 6px;
     }
     .gear-items .gear-list{margin-top:0}
@@ -251,14 +264,14 @@
       font:700 .72rem Arial,sans-serif;
       text-transform:uppercase;
       letter-spacing:.18em;
-      color:var(--rust);
+      color:var(--rust-text);
       margin:22px 0 2px;
     }
     .gear-cat:first-of-type{margin-top:0}
     .gear-items .gear-cat + .gear-list .rule:first-child{border-top:none}
     .gear-note{
       font-size:.95rem;
-      color:var(--rust);
+      color:var(--rust-text);
       font-weight:700;
       margin-left:8px;
     }
@@ -301,7 +314,7 @@
       right:6px;
       top:50%;
       transform:translateY(-50%);
-      color:var(--rust);
+      color:var(--rust-text);
       font:700 1.4rem Arial,sans-serif;
     }
     details.faq[open] summary:after{content:"–";content:"–" / ""}
@@ -318,7 +331,7 @@
       padding:24px 0;
       border-top:1px solid var(--line);
     }
-    .mile strong{font:700 .8rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--rust)}
+    .mile strong{font:700 .8rem Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--rust-text)}
     .rules{
       counter-reset:item;
       display:grid;
@@ -330,7 +343,7 @@
     .rule:before{
       counter-increment:item;
       content:counter(item, decimal-leading-zero);
-      color:var(--rust);
+      color:var(--rust-text);
       font:700 .72rem Arial,sans-serif;
       margin-right:12px;
     }
@@ -348,10 +361,17 @@
       margin-top:7px;
       padding:14px;
       background:rgba(255,255,255,.45);
-      border:1px solid var(--line);
+      border:1px solid #6f7264;
       color:var(--ink);
       font:1rem Georgia,serif;
       border-radius:0;
+    }
+    ::placeholder{color:#5a5c52;opacity:1}
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus{
+      -webkit-text-fill-color:var(--ink);
+      -webkit-box-shadow:0 0 0 40px #f3efe5 inset;
     }
     textarea{min-height:120px;resize:vertical}
     .full{grid-column:1/-1}
@@ -397,9 +417,31 @@
       display:none;
       margin-top:18px;
       padding:16px;
-      background:#d9e0ce;
+      background:rgba(32,51,40,.12);
       border-left:4px solid var(--forest);
     }
+    details.more{grid-column:1/-1}
+    details.more summary{
+      cursor:pointer;
+      list-style:none;
+      font:700 .72rem Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:var(--rust-text);
+      padding:14px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    details.more summary::-webkit-details-marker{display:none}
+    details.more summary:before{content:"+ "}
+    details.more[open] summary:before{content:"– "}
+    details.more .more-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+      padding-top:18px;
+    }
+    .contact-line{margin-top:14px}
     @media(max-width:1100px){
       .gear-split{grid-template-columns:1fr}
     }
@@ -413,9 +455,10 @@
         gap:14px;
         padding:6px 2px 14px;
         -webkit-overflow-scrolling:touch;
-        scrollbar-width:none;
+        scrollbar-width:thin;
       }
-      .plates::-webkit-scrollbar{display:none}
+      .status span,.plate figcaption{font-size:.78rem}
+      details.more .more-grid{grid-template-columns:1fr}
       .plates figure.plate{
         flex:0 0 82vw;
         scroll-snap-align:center;
@@ -446,12 +489,15 @@
       <div class="hero-actions">
         <a class="btn primary" href="#enlist">Request a place</a>
         <a class="btn" href="#briefing">Read the briefing</a>
+        <a class="btn" href="#families">For the families</a>
       </div>
       <div class="status">
         <div><strong>10</strong><span>Total expedition members</span></div>
         <div><strong>9</strong><span>Friends being recruited</span></div>
         <div><strong>10</strong><span>Days in the field</span></div>
         <div><strong>09/27</strong><span>Target expedition window</span></div>
+        <div><strong>$500&ndash;1,200</strong><span>Estimated all-in cost</span></div>
+        <div><strong>Zero</strong><span>Commitment to raise your hand</span></div>
       </div>
     </div>
   </header>
@@ -469,7 +515,7 @@
           another weekend at home.
         </p>
         <figure class="plate plate-hero">
-          <img src="images/campfire.jpg" alt="Campfire flames burning over a bed of branches at night" loading="lazy" />
+          <img src="images/campfire.jpg" width="1280" height="853" alt="Campfire flames burning over a bed of branches at night" loading="lazy" />
           <figcaption>The deliverable
             <em>Ten days of this. Stories we will still be telling at 60.</em>
           </figcaption>
@@ -560,57 +606,57 @@
         </p>
 
         <figure class="plate plate-hero">
-          <img src="images/shuksan.jpg" alt="Mount Shuksan and its glaciers reflected in Picture Lake, North Cascades, Washington" loading="lazy" />
+          <img src="images/shuksan.jpg" width="1280" height="805" alt="Mount Shuksan and its glaciers reflected in Picture Lake, North Cascades, Washington" loading="lazy" />
           <figcaption>Plate I — Mount Shuksan, North Cascades, WA
             <em>The scale of terrain in play. Glaciated peaks, timber, and cold clear water.</em>
           </figcaption>
         </figure>
 
-        <div class="plates">
+        <div class="plates" tabindex="0" role="region" aria-label="Site reference photographs, plates two through nine">
           <figure class="plate">
-            <img src="images/cascade-pass.jpg" alt="Jagged ridgeline and snowfields above Cascade Pass, North Cascades National Park" loading="lazy" />
+            <img src="images/cascade-pass.jpg" width="900" height="675" alt="Jagged ridgeline and snowfields above Cascade Pass, North Cascades National Park" loading="lazy" />
             <figcaption>Plate II — Cascade Pass, WA
               <em>High-route country above the camps.</em>
             </figcaption>
           </figure>
           <figure class="plate">
-            <img src="images/stehekin.jpg" alt="Lake Chelan stretching between forested mountains near Stehekin, Washington" loading="lazy" />
+            <img src="images/stehekin.jpg" width="900" height="675" alt="Lake Chelan stretching between forested mountains near Stehekin, Washington" loading="lazy" />
             <figcaption>Plate III — Head of Lake Chelan, WA
               <em>Stehekin country. No roads in—boat or trail only.</em>
             </figcaption>
           </figure>
           <figure class="plate">
-            <img src="images/mystic-beach.jpg" alt="Tents on a driftwood-strewn gravel beach below coastal forest, Mystic Beach, Vancouver Island" loading="lazy" />
+            <img src="images/mystic-beach.jpg" width="900" height="493" alt="Tents on a driftwood-strewn gravel beach below coastal forest, Mystic Beach, Vancouver Island" loading="lazy" />
             <figcaption>Plate IV — Wilderness coast, Vancouver Island, BC
               <em>Beach camps, fog, driftwood, and tidewater food sources.</em>
             </figcaption>
           </figure>
           <figure class="plate">
-            <img src="images/desolation-sound.jpg" alt="Calm protected inlet with rocky shoreline and dense evergreen forest, Desolation Sound, BC" loading="lazy" />
+            <img src="images/desolation-sound.jpg" width="900" height="595" alt="Calm protected inlet with rocky shoreline and dense evergreen forest, Desolation Sound, BC" loading="lazy" />
             <figcaption>Plate V — Desolation Sound, BC
               <em>Charter-boat waters. Protected inlets, fishing, and islands.</em>
             </figcaption>
           </figure>
           <figure class="plate">
-            <img src="images/shelter-sticks.jpg" alt="Tipi-style shelter frame built from dozens of long branches leaned against a tree" loading="lazy" />
+            <img src="images/shelter-sticks.jpg" width="900" height="599" alt="Tipi-style shelter frame built from dozens of long branches leaned against a tree" loading="lazy" />
             <figcaption>Plate VI — Day one
               <em>A shelter frame from nothing but branches and stubbornness.</em>
             </figcaption>
           </figure>
           <figure class="plate">
-            <img src="images/shelter-leanto.jpg" alt="Log lean-to shelter with stone fire ring in misty conifer forest" loading="lazy" />
+            <img src="images/shelter-leanto.jpg" width="900" height="597" alt="Log lean-to shelter with stone fire ring in misty conifer forest" loading="lazy" />
             <figcaption>Plate VII — Where building can go
               <em>A proper log lean-to with a stone fire ring. The craftsmanship bar.</em>
             </figcaption>
           </figure>
           <figure class="plate">
-            <img src="images/rainforest.jpg" alt="Mist rising off a moss-lined stream over fallen logs in the Hoh Rainforest" loading="lazy" />
+            <img src="images/rainforest.jpg" width="900" height="558" alt="Mist rising off a moss-lined stream over fallen logs in the Hoh Rainforest" loading="lazy" />
             <figcaption>Plate VIII — September, honestly
               <em>It rains here. That is the deal.</em>
             </figcaption>
           </figure>
           <figure class="plate">
-            <img src="images/floatplane.jpg" alt="Red de Havilland Beaver floatplane tied up at a dock on calm water" loading="lazy" />
+            <img src="images/floatplane.jpg" width="900" height="596" alt="Red de Havilland Beaver floatplane tied up at a dock on calm water" loading="lazy" />
             <figcaption>Plate IX — Insertion day
               <em>Boat, floatplane, helicopter, or trail. However we get in, it starts here.</em>
             </figcaption>
@@ -662,15 +708,15 @@
             <p>Tap-outs are not mocked, ranked as weak, pressured to stay in, or taunted with food. Supported food stays separate and is eaten discreetly away from active players.</p>
           </div>
         </div>
-        <div class="plates plates--two">
+        <div class="plates plates--two" tabindex="0" role="region" aria-label="Food survival reference photographs">
           <figure class="plate">
-            <img src="images/salmon-catch.jpg" alt="Sockeye salmon leaping up a waterfall on their way upriver to spawn" loading="lazy" />
+            <img src="images/salmon-catch.jpg" width="900" height="587" alt="Sockeye salmon leaping up a waterfall on their way upriver to spawn" loading="lazy" />
             <figcaption>The food is already out there
               <em>September in the Pacific Northwest is salmon season. Catching it is the game.</em>
             </figcaption>
           </figure>
           <figure class="plate">
-            <img src="images/drying-rack.jpg" alt="Salmon drying on wooden pole racks beside the Chilkoot River, Alaska, 1911" loading="lazy" />
+            <img src="images/drying-rack.jpg" width="768" height="604" alt="Salmon drying on wooden pole racks beside the Chilkoot River, Alaska, 1911" loading="lazy" />
             <figcaption>Build the machine that keeps it
               <em>A field drying rack, Chilkoot River, 1911. Teams that build well, eat well.</em>
             </figcaption>
@@ -874,9 +920,9 @@
           messages—then shapes a one-of-a-kind expedition around what is actually happening.
         </p>
         <div class="grid-3">
-          <div class="card"><h3>Dynamic missions</h3><p>Secret tasks, exploration objectives, engineering challenges, team trades, cooperation missions, and surprise rewards based on what is actually happening.</p></div>
-          <div class="card"><h3>The Communications Hour — from day 5</h3><p>Days one through four are a full disconnect. That is the detox, and it is the point. From day five on, Starlink comes online each evening and personal devices come out of the lockbox for exactly one hour—family, email, business, uploads. Then the timer kills the link. No extensions; Command does not negotiate.</p></div>
-          <div class="card"><h3>Family follow-along</h3><p>Approved photos, clips, status updates, maps, scores, and daily recaps are published to a private app for friends and family.</p></div>
+          <div class="card"><div class="stamp">The gamemaster</div><h3>Dynamic missions</h3><p>Secret tasks, exploration objectives, engineering challenges, team trades, cooperation missions, and surprise rewards based on what is actually happening.</p></div>
+          <div class="card"><div class="stamp">The lifeline</div><h3>The Communications Hour — from day 5</h3><p>Days one through four are a full disconnect. That is the detox, and it is the point. From day five on, Starlink comes online each evening and personal devices come out of the lockbox for exactly one hour—family, email, business, uploads. Then the timer kills the link. No extensions; Command does not negotiate.</p></div>
+          <div class="card"><div class="stamp">The audience</div><h3>Family follow-along</h3><p>Approved photos, clips, status updates, maps, scores, and daily recaps are published to a private app for friends and family. Recaps begin when Starlink comes up on day five; during the day one&ndash;four disconnect, the satellite safety channel stays open both ways for true emergencies.</p></div>
         </div>
         <div class="crate">
           <div class="crate-stamp">Property of<br>Expedition Command<br>— do not open —<br>until authorized</div>
@@ -960,9 +1006,51 @@
       </div>
     </section>
 
+    <section id="families">
+      <div class="wrap">
+        <div class="section-no">Entry 015 // To The Families</div>
+        <h2>The safety layer, all in one place.</h2>
+        <p class="lead">
+          If someone you love is considering this, here is the part of the plan that exists for
+          you. None of it is an afterthought—several of these are hard requirements a site must
+          pass before it can even be considered.
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <div class="stamp">Reaching them</div>
+            <h3>The line is never actually cut</h3>
+            <p>The first four days are device-free by design—but a satellite safety channel stays
+            open both ways for the entire trip. A true emergency at home reaches the expedition
+            within the hour, on day one or day ten. From day five, there is also a Communications
+            Hour every evening.</p>
+          </div>
+          <div class="card">
+            <div class="stamp">Getting them out</div>
+            <h3>Extraction is a site requirement</h3>
+            <p>No site gets chosen without a fast, credible extraction plan—boat or helicopter.
+            Everyone gets medical screening before departure, carries rescue/evacuation insurance,
+            and satellite communication is on hand at all times. A three-day calorie floor and
+            sealed emergency rations ride along; nobody actually goes hungry.</p>
+          </div>
+          <div class="card">
+            <div class="stamp">Seeing the story</div>
+            <h3>A private window in</h3>
+            <p>A private family app carries approved photos, clips, maps, and daily recaps once
+            Starlink comes up on day five. The footage belongs to the expedition and the
+            families only—every participant approves their own clips, and nothing goes further
+            unless the group decides otherwise.</p>
+          </div>
+        </div>
+        <div class="quote">
+          Anyone can tap out of the food game—or leave entirely—at any time, without shame.
+          Getting someone home is a design requirement, not a favor.
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="wrap">
-        <div class="section-no">Entry 015 // Questions You Are Already Asking</div>
+        <div class="section-no">Entry 016 // Questions You Are Already Asking</div>
         <h2>Straight answers.</h2>
         <p class="lead">
           Anything not covered here is still being designed—ask, and help design it.
@@ -975,7 +1063,8 @@
             boots, and rain gear—most of us already own it; borrow before you buy. The region is
             drive-to by design, so no airfare. Boat charter gets split; if helicopter access is
             required, Sean subsidizes it. Rescue/evacuation insurance is the one line item everyone
-            should expect—plan on $100–$200 a year, and we will pick one as a group.</p>
+            should expect—plan on $100–$200 a year, and we will pick one as a group.
+            All-in, plan on roughly $500–$1,200 depending on how much you borrow versus buy.</p>
           </details>
           <details class="faq">
             <summary>What happens if someone gets seriously hurt?</summary>
@@ -996,9 +1085,9 @@
           </details>
           <details class="faq">
             <summary>How do I disappear for ten days?</summary>
-            <p>If you have built your life well, the people around you will feel your absence—but
-            nothing should crumble while you are gone. Expect real work in the weeks before
-            departure to get your ducks in a row. The first four days are a clean break—no devices at all, and true
+            <p>Ten days away from work and family is a real ask—making it workable is part of
+            the design, and you have fourteen months of runway to arrange it. Expect real work
+            in the weeks before departure to get your ducks in a row. The first four days are a clean break—no devices at all, and true
             emergencies reach the expedition through the satellite safety channel. From day five
             on, there is a Communications Hour every evening—Starlink on, your own devices in
             hand—to handle whatever actually needs you. The rest of the time, home cannot reach
@@ -1037,8 +1126,9 @@
             <summary>When do I have to commit?</summary>
             <p>Not today. Right now is about declaring interest and helping with setup—site
             scouting, rules design, gear research. Once the site is secured, spots get offered,
-            starting with the people least likely to quit or complain. Raising your hand early
-            and helping build it is how you end up at the top of that list.</p>
+            starting with the people most committed to building it. Raising your hand early,
+            asking hard questions, and helping design the answers is how you end up at the top
+            of that list.</p>
           </details>
           <details class="faq">
             <summary>What if only four people say yes?</summary>
@@ -1051,7 +1141,7 @@
 
     <section id="enlist">
       <div class="wrap">
-        <div class="section-no">Entry 016 // Enlistment Record</div>
+        <div class="section-no">Entry 017 // Enlistment Record</div>
         <h2>Request one of the nine places.</h2>
         <p class="lead">
           This is not a binding commitment yet. It is a declaration that a 10-day expedition in
@@ -1073,6 +1163,9 @@
             <input required name="quality" placeholder="Example: figuring shit out and no quit" />
           </label>
 
+          <details class="more">
+            <summary>Strengthen your case — optional, two minutes</summary>
+            <div class="more-grid">
           <fieldset class="full">
             <legend>Select your strongest expedition skills</legend>
             <div class="skill-grid">
@@ -1132,23 +1225,23 @@
             What skill will you commit to improving before September 2027?
             <textarea name="improve" placeholder="Fishing, fire, knots, first aid, navigation, shelter design..."></textarea>
           </label>
-
-          <div class="full notice">
-            This expedition is being planned for Washington State or coastal western Canada. Airfare is
-            not expected to be part of participation. If helicopter access is required, that cost will
-            be subsidized so it does not prevent the right teammates from joining.
-          </div>
+            </div>
+          </details>
 
           <div class="full notice" id="formNotice">
-            Heads up: this form currently saves your entry only on this device while the roster
-            system gets built. After you submit, screenshot your entry and send it to Sean so it
-            actually lands on his desk.
+            Submissions go straight to Sean, and a copy stays on this device. Airfare is not part
+            of the cost, and helicopter access, if required, is subsidized. If anything goes
+            wrong with the form, just <a href="mailto:seanknox@outlook.com?subject=Expedition%2040">email Sean directly</a>.
           </div>
 
           <button class="btn primary full" type="submit">Enter the expedition journal</button>
+          <p class="small full contact-line">
+            Prefer to just talk first? <a href="mailto:seanknox@outlook.com?subject=Expedition%2040">Email Sean</a> —
+            questions cost nothing and asking them is a good sign, not a bad one.
+          </p>
         </form>
 
-        <div id="success" class="success" role="status" aria-live="polite">Entry recorded on this device. The challenge has begun—now screenshot this and send it to Sean.</div>
+        <div id="success" class="success" role="status" aria-live="polite">Entry recorded on this device. The challenge has begun—email Sean or screenshot this so it lands on his desk.</div>
         <div id="roster"></div>
       </div>
     </section>
@@ -1170,25 +1263,26 @@
   </main>
 
   <footer>
-    Expedition 40 // Private planning concept // September 2027
+    Expedition 40 // Private planning concept // September 2027<br>
+    Questions: <a href="mailto:seanknox@outlook.com?subject=Expedition%2040">seanknox@outlook.com</a>
   </footer>
 
   <script>
-    // Form backend endpoint (formdrop on fly.io). Empty string = entries save to this device only.
-    const FORMSPREE_ENDPOINT = 'https://oppknox-formdrop.fly.dev/f/exp40-k2v9xq';
+    // Form backend endpoint (self-hosted formdrop on fly.io). Empty string = entries save to this device only.
+    const FORM_ENDPOINT = 'https://oppknox-formdrop.fly.dev/f/exp40-k2v9xq';
 
     const form = document.getElementById('signupForm');
     const success = document.getElementById('success');
     const roster = document.getElementById('roster');
-    const formNotice = document.getElementById('formNotice');
     const submitBtn = form.querySelector('button[type="submit"]');
 
-    if (FORMSPREE_ENDPOINT && formNotice) {
-      formNotice.textContent = 'Submissions go straight to Sean. A copy also stays on this device below.';
-    }
-
     function loadEntries(){
-      return JSON.parse(localStorage.getItem('expedition40_entries') || '[]');
+      try {
+        const entries = JSON.parse(localStorage.getItem('expedition40_entries') || '[]');
+        return Array.isArray(entries) ? entries : [];
+      } catch (e) {
+        return [];
+      }
     }
 
     function saveEntries(entries){
@@ -1209,7 +1303,7 @@
           </div>
           <div>
             <b>Role:</b> ${escapeHtml(e.role || 'Not selected')}<br>
-            <b>Skills:</b> ${e.skills.length ? e.skills.map(escapeHtml).join(', ') : 'Not selected'}<br>
+            <b>Skills:</b> ${(e.skills || []).length ? (e.skills || []).map(escapeHtml).join(', ') : 'Not selected'}<br>
             <b>Food track:</b> ${escapeHtml(e.food)}<br>
             <b>Access:</b> ${escapeHtml(e.access)}
           </div>
@@ -1240,14 +1334,15 @@
       };
 
       let sent = false;
-      if (FORMSPREE_ENDPOINT) {
+      if (FORM_ENDPOINT) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Transmitting…';
         try {
-          const res = await fetch(FORMSPREE_ENDPOINT, {
+          const res = await fetch(FORM_ENDPOINT, {
             method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...entry, skills: entry.skills.join(', ') })
+            body: JSON.stringify({ ...entry, skills: entry.skills.join(', ') }),
+            signal: AbortSignal.timeout(8000)
           });
           sent = res.ok;
         } catch (e) {
@@ -1261,10 +1356,10 @@
       entries.push(entry);
       saveEntries(entries);
       form.reset();
-      if (FORMSPREE_ENDPOINT && sent) {
-        success.textContent = 'Entry transmitted to Expedition Command. The challenge has begun.';
-      } else if (FORMSPREE_ENDPOINT && !sent) {
-        success.textContent = 'Transmission failed—your entry is saved on this device. Screenshot it and send it to Sean.';
+      if (FORM_ENDPOINT && sent) {
+        success.textContent = 'Entry transmitted to Expedition Command. The challenge has begun—Sean will follow up within the week.';
+      } else if (FORM_ENDPOINT && !sent) {
+        success.textContent = 'Transmission failed—your entry is saved on this device. Email Sean directly (link above) or screenshot this and text it to him.';
       }
       success.style.display = 'block';
       renderRoster();

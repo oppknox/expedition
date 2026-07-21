@@ -1231,12 +1231,12 @@
           <div class="full notice" id="formNotice">
             Submissions go straight to Sean, and a copy stays on this device. Airfare is not part
             of the cost, and helicopter access, if required, is subsidized. If anything goes
-            wrong with the form, just <a href="mailto:seanknox@outlook.com?subject=Expedition%2040">email Sean directly</a>.
+            wrong with the form, just <a href="mailto:join@expedition40.com?subject=Expedition%2040">email join@expedition40.com</a>.
           </div>
 
           <button class="btn primary full" type="submit">Enter the expedition journal</button>
           <p class="small full contact-line">
-            Prefer to just talk first? <a href="mailto:seanknox@outlook.com?subject=Expedition%2040">Email Sean</a> —
+            Prefer to just talk first? <a href="mailto:join@expedition40.com?subject=Expedition%2040">Email join@expedition40.com</a> —
             questions cost nothing and asking them is a good sign, not a bad one.
           </p>
         </form>
@@ -1264,12 +1264,12 @@
 
   <footer>
     Expedition 40 // Private planning concept // September 2027<br>
-    Questions: <a href="mailto:seanknox@outlook.com?subject=Expedition%2040">seanknox@outlook.com</a>
+    Questions: <a href="mailto:join@expedition40.com?subject=Expedition%2040">join@expedition40.com</a>
   </footer>
 
   <script>
-    // Form backend endpoint (self-hosted formdrop on fly.io). Empty string = entries save to this device only.
-    const FORM_ENDPOINT = 'https://oppknox-formdrop.fly.dev/f/exp40-k2v9xq';
+    // Form backend: same-origin Worker endpoint that emails entries to Sean.
+    const FORM_ENDPOINT = '/api/enlist';
 
     const form = document.getElementById('signupForm');
     const success = document.getElementById('success');

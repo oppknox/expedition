@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="only light" />
+  <title>For Landowners — Expedition 40</title>
+  <link rel="canonical" href="https://expedition40.com/landowners/" />
+  <link rel="icon" href="favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <meta name="description" content="How Expedition 40 plans to use land in September 2027, and the restore-on-packout promise. Temporary legal use only—not a permanent claim." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Expedition 40" />
+  <meta property="og:title" content="For Landowners — Expedition 40" />
+  <meta property="og:description" content="Ten people. Ten days. September 2027. Washington or coastal western Canada. Legal temporary use, then we restore the site and leave." />
+  <meta property="og:url" content="https://expedition40.com/landowners/" />
+  <meta property="og:image" content="https://expedition40.com/images/og-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="For Landowners — Expedition 40" />
+  <meta name="twitter:description" content="How the land would be used, and the restore-on-packout promise." />
+  <meta name="twitter:image" content="https://expedition40.com/images/og-card.jpg" />
+  <style>
+    :root{
+      color-scheme: only light;
+      --ink:#171912;
+      --paper:#e9e2cf;
+      --paper-dark:#d2c7aa;
+      --forest:#203328;
+      --forest-2:#304b38;
+      --rust:#9b4f2f;
+      --rust-text:#8a4325;
+      --gold:#b99a58;
+      --line:rgba(23,25,18,.22);
+      --white:#f7f4ea;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        linear-gradient(rgba(20,32,24,.78),rgba(20,32,24,.78)),
+        radial-gradient(circle at 20% 20%,rgba(255,255,255,.08),transparent 30%),
+        #1d2e23;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .journal{position:relative}
+    .journal:before{
+      content:"";
+      position:absolute; inset:0; pointer-events:none;
+      opacity:.05;
+      background-image:
+        repeating-linear-gradient(0deg,transparent,transparent 3px,#000 4px),
+        repeating-linear-gradient(90deg,transparent,transparent 5px,#fff 6px);
+      mix-blend-mode:overlay;
+    }
+    @media (prefers-contrast: more){
+      .journal:before{display:none}
+    }
+    a{color:inherit}
+    .wrap{width:min(1120px,92vw);margin:auto}
+    .hero{
+      min-height:auto;
+      color:var(--white);
+      display:grid;
+      align-items:center;
+      padding:72px 0 48px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero:after{
+      content:"EXPEDITION 40";
+      position:absolute;
+      right:-40px; bottom:20px;
+      font:700 clamp(4rem,14vw,10rem)/.8 Arial,sans-serif;
+      opacity:.035;
+      letter-spacing:-.05em;
+      transform:rotate(-5deg);
+      white-space:nowrap;
+    }
+    .kicker{
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      font:700 .78rem/1.4 Arial,sans-serif;
+      color:#d8c38e;
+    }
+    h1{
+      font-size:clamp(3.2rem,9vw,7rem);
+      line-height:.82;
+      margin:.18em 0 .28em;
+      letter-spacing:-.06em;
+      max-width:12ch;
+    }
+    .hero-copy{
+      max-width:760px;
+      font-size:clamp(1.1rem,2vw,1.42rem);
+      line-height:1.55;
+      color:#eee8d9;
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border:1px solid rgba(255,255,255,.4);
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font:700 .76rem Arial,sans-serif;
+      cursor:pointer;
+      transition:.2s;
+      background:transparent;
+      color:inherit;
+    }
+    .btn.primary{background:var(--rust-text);border-color:var(--rust-text);color:white}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .btn:active{transform:translateY(1px);filter:brightness(.95)}
+    @media (prefers-reduced-motion: reduce){
+      .btn,.btn:hover,.btn:active{transform:none;transition:none}
+    }
+    .journal{
+      background:var(--paper);
+      box-shadow:0 0 80px rgba(0,0,0,.35);
+      border-top:10px solid var(--rust);
+    }
+    section{
+      padding:80px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .section-no{
+      font:700 .72rem Arial,sans-serif;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--rust-text)
+    }
+    h2{
+      font-size:clamp(2.2rem,5vw,4.8rem);
+      line-height:.95;
+      margin:.18em 0 .4em;
+      letter-spacing:-.035em;
+    }
+    .lead{font-size:1.25rem;line-height:1.65;max-width:840px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+    .card{
+      padding:26px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.22);
+      min-height:190px;
+    }
+    .card h3{font-size:1.35rem;margin-top:0}
+    .stamp{
+      display:inline-block;
+      border:2px solid var(--rust-text);
+      color:var(--rust-text);
+      font:700 .68rem Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      padding:6px 9px;
+      transform:rotate(-2deg);
+      margin-bottom:15px;
+    }
+    .quote{
+      font-size:clamp(1.65rem,3vw,2.7rem);
+      line-height:1.25;
+      padding:34px;
+      border-left:6px solid var(--rust);
+      background:rgba(255,255,255,.25);
+      margin-top:35px;
+    }
+    figure.plate{
+      margin:34px 0 0;
+      background:var(--white);
+      border:1px solid var(--line);
+      padding:10px 10px 12px;
+      box-shadow:0 8px 22px rgba(23,25,18,.18);
+    }
+    .plate img{
+      width:100%;
+      height:clamp(240px,42vw,400px);
+      object-fit:cover;
+      display:block;
+      filter:saturate(.9) contrast(1.03) sepia(.1);
+    }
+    .plate figcaption{
+      padding-top:10px;
+      font:700 .68rem Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+    }
+    .plate figcaption em{
+      display:block;
+      margin-top:4px;
+      font:italic .85rem Georgia,serif;
+      text-transform:none;
+      letter-spacing:0;
+      color:#4f5149;
+    }
+    .credits{margin-top:26px;font-size:.78rem;color:#5a5c52;line-height:1.6}
+    .credits a{color:#5a5c52}
+    .rules{
+      counter-reset:item;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px 30px;
+      margin-top:32px;
+    }
+    .rule{padding:18px 0;border-top:1px solid var(--line)}
+    .rule:before{
+      counter-increment:item;
+      content:counter(item, decimal-leading-zero);
+      color:var(--rust-text);
+      font:700 .72rem Arial,sans-serif;
+      margin-right:12px;
+    }
+    .notice{
+      background:var(--forest);
+      color:var(--white);
+      padding:20px;
+      line-height:1.55;
+      margin-top:34px;
+    }
+    .small{font-size:.9rem;color:#4f5149}
+    footer{
+      color:#d6d0bf;
+      padding:45px 0 70px;
+      text-align:center;
+      font:700 .72rem Arial,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+    @media(max-width:800px){
+      .grid-3,.rules{grid-template-columns:1fr}
+      section{padding:58px 0}
+      h1{max-width:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="kicker">Field Journal // For Landowners</div>
+      <h1>Expedition 40</h1>
+      <p class="hero-copy">
+        If this land is yours—or you steward it—this page is the whole ask in one place.
+        <strong>Ten people. Ten days. September 2027.</strong>
+        Washington State or coastal western Canada.
+        Legal, temporary use. Then we restore the site and leave.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#use">How we would use the land</a>
+        <a class="btn" href="#restore">The restore promise</a>
+        <a class="btn" href="/">Back to the expedition</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="journal">
+    <section id="use">
+      <div class="wrap">
+        <div class="section-no">Entry L01 // How The Land Would Be Used</div>
+        <h2>A short, permitted stay. Not a claim.</h2>
+        <p class="lead">
+          Expedition 40 is a private ten-day wilderness trip planned for
+          <strong>September 2027</strong> in <strong>Washington State or coastal western Canada</strong>.
+          The group is small: <strong>about ten adults</strong>. The work on the land is camp work—
+          primitive shelter-build, securing water, and fishing. We are asking for
+          <strong>legal temporary use only</strong>. We are not asking to own the land, occupy it, or keep a standing right to return.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="stamp">When</div>
+            <h3>September 2027</h3>
+            <p>Ten days in the field. The exact dates stay unset until a site is secured and the owner’s written permission is in hand.</p>
+          </div>
+          <div class="card">
+            <div class="stamp">Where</div>
+            <h3>Washington or coastal western Canada</h3>
+            <p>Remote enough to feel like wilderness. Candidate country includes remote Washington, Vancouver Island, coastal British Columbia, private islands, and legally authorized lake or shoreline land.</p>
+          </div>
+          <div class="card">
+            <div class="stamp">Who</div>
+            <h3>About ten people</h3>
+            <p>A small group of friends. Not a public event, not a festival, not spectators. Everyone in the party camps, works, and leaves together.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="stamp">Shelter</div>
+            <h3>Primitive, temporary builds</h3>
+            <p>Teams would build primitive shelters from materials the owner allows. These are field structures for the ten days—not cabins, not foundations, not a lodge.</p>
+          </div>
+          <div class="card">
+            <div class="stamp">Water &amp; food</div>
+            <h3>Water, then fishing</h3>
+            <p>Secure drinking water. Fish where it is legal and the owner allows it. Fires for cooking and warmth. Anything beyond that—timber use, traps, hunting—only if the written permission says so.</p>
+          </div>
+          <div class="card">
+            <div class="stamp">The legal line</div>
+            <h3>Temporary use. Not a claim.</h3>
+            <p>We do not want title, a lease that outlives the trip, a road, or a standing camp. Permission would be for a defined stay. When the stay ends, so does the use.</p>
+          </div>
+        </div>
+
+        <figure class="plate">
+          <img src="images/shelter-leanto.jpg" width="900" height="597" alt="Log lean-to shelter with stone fire ring in misty conifer forest" />
+          <figcaption>The kind of structure
+            <em>A field lean-to. It comes down on packout unless you tell us to leave it.</em>
+          </figcaption>
+        </figure>
+        <p class="credits">
+          Reference photograph via Wikimedia Commons:
+          <a href="https://commons.wikimedia.org/wiki/File:Lean_to.jpg">Geotek</a> (public domain).
+          Example build—not a proposed site.
+        </p>
+
+        <div class="quote">
+          We are looking for permission to visit, camp, and leave—not a permanent place on the map.
+        </div>
+      </div>
+    </section>
+
+    <section id="restore">
+      <div class="wrap">
+        <div class="section-no">Entry L02 // The Restore-On-Packout Promise</div>
+        <h2>When we leave, we put it back.</h2>
+        <p class="lead">
+          <strong>We restore the site to the best of our ability when we leave.</strong>
+          That is not a courtesy written for this page. It is already a rule of the expedition.
+        </p>
+        <div class="rules">
+          <div class="rule">Leave the site better than we found it.</div>
+          <div class="rule">The site is restored and every temporary structure is dismantled unless the property owner directs otherwise.</div>
+          <div class="rule">Fire rings, cordage, caches, trash, and anything we packed in come out with us.</div>
+          <div class="rule">We do not leave a camp standing for next year.</div>
+          <div class="rule">If you want a structure left, you say so in writing. Otherwise it comes down.</div>
+          <div class="rule">Cleanup is part of packout, not an optional last chore.</div>
+        </div>
+        <div class="quote">
+          Restore on packout: we leave the land as we found it—or better—to the best of our ability.
+        </div>
+        <p class="small" style="max-width:840px;margin-top:28px">
+          Ten people will have been there. We cannot honestly promise the ground will look untouched.
+          We can promise the work of putting it back, and that we will not treat that work as optional.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-no">Entry L03 // What This Page Is—And Is Not</div>
+        <h2>Intent, stated plainly.</h2>
+        <p class="lead">
+          The site is not secured yet. Rights to camp, build primitive shelters, take water, and fish
+          still have to be negotiated for a specific property, in writing. This page is so a landowner
+          can see the plan and the promise without wading through the rest of the expedition.
+        </p>
+        <div class="notice">
+          <strong>This is not a contract, a permit, or a payment offer.</strong>
+          Nothing here binds you. Nothing here lets us occupy land. If you are reading this because
+          someone asked about your property, the facts are above. Questions can go to
+          <a href="mailto:join@expedition40.com?subject=Expedition%2040%20land">join@expedition40.com</a>.
+        </div>
+        <p class="lead" style="margin-top:34px">
+          <a class="btn primary" href="/">The full expedition journal</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Expedition 40 // Private planning concept // September 2027<br>
+    <a href="/">Home</a>
+    &nbsp;//&nbsp;
+    Questions: <a href="mailto:join@expedition40.com?subject=Expedition%2040%20land">join@expedition40.com</a>
+  </footer>
+</body>
+</html>
